@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Mighty Play Challenge Game</title>
+    <!--styles -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fredoka+One">
+    <link rel="stylesheet" type="text/css" href="/vendors/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/style.css">
+
+    <!--scripts-->
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/factories/data.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers/controller.js"></script>
+
+</head>
+
+<body ng-controller="gameCtrl">
+<div class="container-fluid row">
+    <div class="col-md-12">
+        <div class="bigDiv">
+
+            <main ng-view></main>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

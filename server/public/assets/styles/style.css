@@ -1,0 +1,40 @@
+
+body {
+    background-image: url("../views/bkgd1.png");
+    font-family: 'Fredoka One', Arial, sans-serif;
+}
+
+
+.bigDiv {
+    background-color: #FFFFFF;
+    width: 90%;
+    height: 85vh;
+    margin: 5% auto;
+    padding: 3%;
+    border: 8px ridge red;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.instr {
+    width: 60%;
+    margin: auto;
+}
+
+/*Category Page*********************/
+
+.logoDiv img {
+    width: 100%;
+    height: auto;
+}
+
+.categoryTitleDiv {
+    /*margin-top: 10px;*/
+    font-size: 48px;
+    text-align: center;
+    /*height: 90px;*/
+    text-shadow: -1px -1px 0 gold,
+    1px -1px 0 gold,
+    -1px 1px 0 gold,
+    1px 1px 0 gold;
+}

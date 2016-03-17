@@ -1,0 +1,19 @@
+{
+  "name": "mightyplay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js"
+  },
+  "author": "Kelly G Moore",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.1",
+    "angular-route": "^1.5.1",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.4",
+    "pg": "^4.5.1"
+  }
+}

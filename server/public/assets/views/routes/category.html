@@ -1,0 +1,27 @@
+
+<div class="mainBody container-fluid">
+    <div class="row">
+        <div class="logoDiv col-md-2">
+            <img src="/assets/views/Logo1.png" alt="logo">
+        </div>
+        <div class="categoryTitleDiv col-md-7">
+            <p>Choose A Class</p>
+        </div>
+        <div class="pointsDifficultyDiv col-md-2">
+            <h4>Total Points <span class="ptsSpan">{{newCatValues.runningTotal}}</span></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 headerDiv"></div>
+    </div>
+
+    <div class="categoryListDiv row">
+        <div class="col-md-12">
+            <div ng-repeat="cat in trivia" ng-if="cat.category != null">
+                <h3 class="animated rotateIn"><button ng-click="playCategory(cat)" ng-disabled="cat.disabled" class="linkButton">
+                    <img ng-show="cat.showRibbon" src="/assets/views/passCat.png" alt="Category completed">{{cat.category}}</button></h3>
+            </div>
+        </div>
+    </div>
+
+</div>
