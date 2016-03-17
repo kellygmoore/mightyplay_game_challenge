@@ -17,9 +17,11 @@
 
     <div class="categoryListDiv row">
         <div class="col-md-12">
-            <div ng-repeat="cat in trivia" ng-if="cat.category != null">
+            <div ng-repeat="cat in trivia" ng-if="cat.category != null" class="catDiv">
                 <h3 class="animated flipInX"><button ng-click="playCategory(cat)" ng-disabled="cat.disabled" class="linkButton">
-                    <img ng-show="cat.showRibbon" src="/assets/views/passCat.png" alt="Category completed">{{cat.category}}</button></h3>
+                    <img ng-show="cat.showRibbon" src="/assets/views/passCat.png" alt="Category completed">{{cat.category}}</button>
+                    <p class="showSub">{{cat.focus}}</p>
+                </h3>
             </div>
         </div>
     </div>
