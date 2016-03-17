@@ -38,3 +38,29 @@ body {
     -1px 1px 0 gold,
     1px 1px 0 gold;
 }
+
+.pointsDiv {
+    text-align: right;
+    /*margin-top: 15px;*/
+    /*height: 85px;*/
+}
+
+.ptsSpan {
+    color: purple;
+}
+
+.headerDiv {
+    border-bottom: 4px solid black;
+    height: 5px;
+}
+
+.linkButton {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: #069;
+    cursor: pointer;
+}
+.linkButton:hover{
+    text-decoration: underline;
+}

@@ -20,7 +20,7 @@ router.get('/', function(req, res){
     var gameArray = [];
 
     pg.connect(connectionString, function(err, client, done){
-        console.log(err);
+        //console.log("Top error: ", err);
         var query = client.query("SELECT id, category, focus, question, " +
             "ans1, ans2, ans3, ans4, sol1 FROM letsplay ORDER BY id ASC;");
 
@@ -34,7 +34,7 @@ router.get('/', function(req, res){
             return res.json(gameArray);
         });
 
-        if(err) console.log(err);
+        if(err) console.log("Error: ", err);
 
     });
 
