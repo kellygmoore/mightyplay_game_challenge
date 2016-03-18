@@ -28,7 +28,7 @@
                     </div>
                     <div class="back">
                         <!-- back content -->
-                        <h4 class="answerCard">Answer: {{catObject.sol1}}</h4>
+                        <h4 class="answerCard">Answer: {{catObject.sol}}</h4>
                     </div>
                 </div>
             </div>
@@ -38,14 +38,14 @@
 
         </div>
 
-        <div class="container-fluid col-md-3">
-            <ul ng-model="catObject.randomAnswerArray">
+        <div class="container-fluid answerDiv col-md-7">
+            <ol ng-model="catObject.randomAnswerArray">
                 <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
                     <div class="sortElement">
-                        <span data-ng-bind="answer.ans"></span>
+                        <span class="highlightHover" data-ng-bind="answer.ans" ng-click="checkAnswer(answer)"></span>
                     </div>
                 </li>
-            </ul>
+            </ol>
         </div>
 
     </div>

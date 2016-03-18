@@ -70,8 +70,11 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
     catTitle = $scope.catObject.category;
     $scope.category = catTitle;
-    $scope.catPoints = $scope.catObject.points;
+    //$scope.catPoints = $scope.catObject.points;
 
+    $scope.checkAnswer = function(clickedAnswer){
+        console.log("I clicked on answer: ", clickedAnswer);
+    }
 
 
 }]);
