@@ -34,7 +34,7 @@ myApp.factory('ShareData', ["$http", function($http){
             randomAnswerArray: shuffleArray(answerArray),
             solutionArray: [catData.sol1]
         };
-        //console.log("In factory in playCategory, here is categoryToPlay: ", categoryToPlay);
+        console.log("In factory in playCategory, here is categoryToPlay: ", categoryToPlay);
 
         //put answers in random order//////////////
         function shuffleArray(array) {
@@ -50,12 +50,12 @@ myApp.factory('ShareData', ["$http", function($http){
         return categoryToPlay;
     };
     //
-    ////change view back on category page to update total points from game///////
-    //var update = function(runPts, cName){
-    //    runningTot += runPts;
-    //    updateVals = {runningTotal: runningTot, catPlayed: cName};
-    //    return updateVals;
-    //};
+    //change view back on category page to update total points from game///////
+    var update = function(runPts, cName){
+        runningTot += runPts;
+        updateVals = {runningTotal: runningTot, catPlayed: cName};
+        return updateVals;
+    };
     //
     //
     ////PUBLIC///////////////////////////////////////////////
@@ -71,19 +71,19 @@ myApp.factory('ShareData', ["$http", function($http){
         },
         playCategory: function(catData){
             return play(catData);
+        },
+        getNewCat: function(){
+            return newCat;
+        },
+        newCategory: function(points, categoryName){
+            newCat = {totPts: points, cat: categoryName};
+        },
+        getUpdateCatPage: function(){
+            return updateVals;
+        },
+        updateCat: function(runPts, cName){
+            return update(runPts, cName);
         }
-    //    getNewCat: function(){
-    //        return newCat;
-    //    },
-    //    newCategory: function(points, categoryName){
-    //        newCat = {totPts: points, cat: categoryName};
-    //    },
-    //    getUpdateCatPage: function(){
-    //        return updateVals;
-    //    },
-    //    updateCat: function(runPts, cName){
-    //        return update(runPts, cName);
-    //    }
     };
     //
     return publicData;

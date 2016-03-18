@@ -1,7 +1,5 @@
 //var myApp = angular.module("myApp", []);
 
-//myApp.controller('gameCtrl', ["$scope", '$http', '$filter', function($scope, $http, $filter){
-
 myApp.controller('startCtrl', ["$scope", function($scope){
 
     //controller only function to show instructions when clicked//////////
@@ -66,7 +64,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
         $location.path('/questionpage');
         newValue.disabled = true;
         newValue.showRibbon = true;
-        console.log("Showribbon: ", newValue.showRibbon);
+        //console.log("Showribbon: ", newValue.showRibbon);
         $scope.shareData.playCategory(newValue);
     };
 

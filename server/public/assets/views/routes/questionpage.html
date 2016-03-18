@@ -1,0 +1,61 @@
+<div class="mainBody container-fluid">
+    <div class="row topDiv">
+        <div class="logoDiv col-md-2">
+            <img class="smallLogo" src="/assets/views/Logo1.png" alt="logo">
+        </div>
+        <div class="categoryTitleDiv col-md-8">
+            <p>{{category}}</p>
+        </div>
+        <div class="pointsDifficultyDiv col-md-2">
+            <p>Points Earned<span class="ptsSpan">{{catPoints}}/{{catObject.points}}</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 headerDiv">
+        </div>
+    </div>
+</div>
+
+<div class="mainBody">
+
+    <div class="gameDiv row">
+        <div class="middle col-md-4 col-md-offset-1">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <!-- front content -->
+                        <h4 class="questionCard">{{catObject.question}}</h4>
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <h4 class="answerCard">Answer: {{catObject.sol1}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!--<button class="buttonClass animated bounceInUp" ng-click="checkAnswers()">Check Answer</button><br>-->
+            <h4 ng-hide="showSuccessMsg" class="animated tada">You Got It Right!</h4>
+
+        </div>
+
+        <div class="container-fluid col-md-3">
+            <ul ng-model="catObject.randomAnswerArray">
+                <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
+                    <div class="sortElement">
+                        <span data-ng-bind="answer.ans"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div ng-hide="showNextArrow" class="showNextArrow col-md-11"><a href="" ng-click="nextQuestion(trivia[nextCatObjectIndex])">Next Question
+            <img src="assets/views/nextarrow.png" alt="next arrow" class="animated infinite pulse"></a>
+        </div>
+        <div ng-hide="showNextCatArrow" class="showNextArrow col-md-11"><a href="#completion" ng-click="playNewCat((totalPoints+catPoints), category)">Complete Category
+            <img src="assets/views/nextarrow.png" alt="next arrow" class="animated infinite pulse"></a>
+        </div>
+    </div>
+</div>
