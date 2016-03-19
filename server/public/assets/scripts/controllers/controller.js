@@ -33,7 +33,8 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     //$scope.disableAnswers = false;
     //$scope.noPointsMsg = true;
     //$scope.showGameOver = true;
-
+    $scope.isFlipped = false;
+    $scope.pointsEarnedCounter = 0;
     $scope.catPlayed = "";
     $scope.trivia = [];
     $scope.totalPoints = 0;
@@ -74,6 +75,14 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
     $scope.checkAnswer = function(clickedAnswer){
         console.log("I clicked on answer: ", clickedAnswer);
+        if(clickedAnswer.sol === clickedAnswer.ans) {
+            console.log("Yes, match!");
+            $scope.isFlipped = true;
+            $scope.pointsEarnedCounter++;
+        } else {
+            console.log("No, not a match");
+            $scope.isFlipped = true;
+        }
     }
 
 

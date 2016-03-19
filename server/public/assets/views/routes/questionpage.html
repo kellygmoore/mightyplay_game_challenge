@@ -7,7 +7,7 @@
             <p>{{category}}</p>
         </div>
         <div class="pointsDifficultyDiv col-md-2">
-            <p>Points Earned<span class="ptsSpan">{{catPoints}}/{{catObject.points}}</span></p>
+            <p>Points Earned <span class="ptsSpan">{{}}</span></p>
         </div>
     </div>
     <div class="row">
@@ -20,15 +20,15 @@
 
     <div class="gameDiv row">
         <div class="middle col-md-4 col-md-offset-1">
-            <div class="flip-container">
-                <div class="flipper">
-                    <div class="front">
+            <div class="flip">
+                <div class="card" ng-class="{'flipped':isFlipped}">
+                    <div class="face front">
                         <!-- front content -->
                         <h4 class="questionCard">{{catObject.question}}</h4>
                     </div>
-                    <div class="back">
+                    <div class="face back">
                         <!-- back content -->
-                        <h4 class="answerCard">Answer: {{catObject.sol}}</h4>
+                        <h4 class="answerCard">Answer: {{catObject.solution}}</h4>
                     </div>
                 </div>
             </div>

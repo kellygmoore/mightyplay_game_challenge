@@ -32,7 +32,7 @@ myApp.factory('ShareData', ["$http", function($http){
             focus: catData.focus,
             question: catData.question,
             randomAnswerArray: shuffleArray(answerArray),
-            solutionArray: [catData.sol1]
+            solution: catData.sol1
         };
         console.log("In factory in playCategory, here is categoryToPlay: ", categoryToPlay);
 
