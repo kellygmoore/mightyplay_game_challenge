@@ -34,11 +34,11 @@ myApp.factory('ShareData', ["$http", function($http){
             randomAnswerArray: shuffleArray(answerArray),
             solution: catData.sol1
         };
-        console.log("In factory in playCategory, here is categoryToPlay: ", categoryToPlay);
+        //console.log("In factory in playCategory, here is categoryToPlay: ", categoryToPlay);
 
         //put answers in random order//////////////
         function shuffleArray(array) {
-            console.log("passed in array: ", array);
+            //console.log("passed in array: ", array);
             for (var i = array.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
                 var temp = array[i];

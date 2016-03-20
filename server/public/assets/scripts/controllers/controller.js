@@ -26,7 +26,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     //set booleans for ng-hide
     $scope.beginPlay = false;
     $scope.gamePlay = true;
-    $scope.trueOrFalse = true;
+    //$scope.trueOrFalse = true;
     $scope.showNextArrow = false;
     $scope.showNextCatArrow = false;
     $scope.showSuccessMsg = false;
@@ -35,7 +35,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     $scope.pointsEarnedCounter = 0;
     $scope.catPlayed = "";
     $scope.trivia = [];
-    $scope.counter = 0;
+    //$scope.counter = 0;
     $scope.totalPoints = 0;
     $scope.runningTotalPts = 0;
     $scope.newCatValues = {};
@@ -56,7 +56,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     console.log($scope.trivia);
     //play a session based on Category clicked on/////////////////////////////
     $scope.catObject = $scope.shareData.getCategory();
-    console.log("CatObject1: ", $scope.catObject);
+    console.log("CatObject: ", $scope.catObject);
 
 
     $scope.beginGame = function(){
@@ -82,16 +82,18 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
         console.log("I clicked on answer: ", clickedAnswer);
         $scope.isFlipped = true;
-        $scope.counter++;
+        //$scope.counter++;
         $scope.showNextArrow = true;
+        $scope.nextCatObjectIndex = $scope.catObject.idNum;
         //$scope.showNextArrow = !$scope.showNextArrow;
         if(clickedAnswer.sol === clickedAnswer.ans) {
-            console.log("Yes, match!");
+            //console.log("Yes, match!");
             //$scope.isFlipped = true;
             $scope.showSuccessMsg = true;
             $scope.pointsEarnedCounter++;
+
         } else {
-            console.log("No, not a match");
+            //console.log("No, not a match");
             $scope.showIncorrectMsg = true;
             //$scope.isFlipped = true;
         }
@@ -141,26 +143,31 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
 
     //on click of the next arrow after correctly ordered//////////////////////////////
-    $scope.nextQuestion = function(next){
-        $scope.isFlipped = false;
-        $scope.showSuccessMsg = false;
-        lastPts = $scope.catPoints;
-        $scope.totalPoints += $scope.catPoints;
-        //console.log("Total Points: ", $scope.totalPoints);
+    $scope.nextQuestion = function(next) {
+        if(next.category === null) {
+            //console.log("Next question click: ", next);
+            $scope.isFlipped = false;
+            $scope.showSuccessMsg = false;
+            lastPts = $scope.catPoints;
+            $scope.totalPoints += $scope.catPoints;
+            //console.log("Total Points: ", $scope.totalPoints);
 
-        //get shared data to set up new catObject//////////////////////////
-        $scope.catObject = $scope.shareData.playCategory(next);
-        //make sure category title doesn't change (in db, it is null)
-        $scope.category = catTitle;
+            //get shared data to set up new catObject//////////////////////////
+            $scope.catObject = $scope.shareData.playCategory(next);
+            //make sure category title doesn't change (in db, it is null)
+            $scope.category = catTitle;
 
-        $scope.catPoints = $scope.catObject.points;
-        //set the new view//////////
-        $scope.noPointsMsg = true;
-        $scope.showSuccessMsg = true;
-        $scope.disableAnswers = false;
-        $scope.showSolution = true;
-        $scope.trueOrFalse = true;
-        $scope.showNextArrow = true;
+            $scope.catPoints = $scope.catObject.points;
+            //set the new view//////////
+
+            $scope.showNextArrow = true;
+            //$scope.nextCatObjectIndex = $scope.catObject.idNum;
+        } else {
+            console.log("In else statement, cat not null.");
+                $scope.showNextArrow = false;
+                $scope.showNextCatArrow = true;
+        }
+
     };
 
 //when completed category, set points total and category name to display on page//////////////////////
