@@ -7,7 +7,7 @@
             <p>{{category}}</p>
         </div>
         <div class="pointsDifficultyDiv col-md-2">
-            <p>Points Earned <span class="ptsSpan">{{}}</span></p>
+            <p>Points <span class="ptsSpan">{{pointsEarnedCounter}}</span></p>
         </div>
     </div>
     <div class="row">
@@ -17,28 +17,29 @@
 </div>
 
 <div class="mainBody">
-
-    <div class="gameDiv row">
-        <div class="middle col-md-4 col-md-offset-1">
+    <div ng-hide="beginPlay" ng-click="beginGame()">
+        <button class="beginButton animated infinite pulse">Play</button><br><br>
+        <p><i>You're 60 seconds will begin. Good luck!</i></p>
+    </div>
+    <div ng-hide="gamePlay" class="gameDiv row">
+        <div class="middle col-md-5 col-md-offset-1">
             <div class="flip">
                 <div class="card" ng-class="{'flipped':isFlipped}">
-                    <div class="face front">
+                    <div class="face front questionCard">
                         <!-- front content -->
-                        <h4 class="questionCard">{{catObject.question}}</h4>
+                        <h4>{{catObject.question}}</h4>
                     </div>
-                    <div class="face back">
+                    <div class="face back answerCard">
                         <!-- back content -->
-                        <h4 class="answerCard">Answer: {{catObject.solution}}</h4>
+                        <h4>Correct Answer: <br>{{catObject.solution}}</h4>
+                        <img ng-show="showSuccessMsg" src="/assets/views/thumbsUp1.png" alt="correct answer">
+                        <img ng-show="!showSuccessMsg" src="/assets/views/thumbsDown.png" alt="incorrect answer">
                     </div>
                 </div>
             </div>
-
-            <!--<button class="buttonClass animated bounceInUp" ng-click="checkAnswers()">Check Answer</button><br>-->
-            <h4 ng-hide="showSuccessMsg" class="animated tada">You Got It Right!</h4>
-
         </div>
 
-        <div class="container-fluid answerDiv col-md-7">
+        <div class="container-fluid answerDiv col-md-5">
             <ol ng-model="catObject.randomAnswerArray">
                 <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
                     <div class="sortElement">
@@ -46,15 +47,17 @@
                     </div>
                 </li>
             </ol>
+            <br><br>
+            <h4 ng-show="showSuccessMsg" class="animated tada">Correct Answer!</h4>
         </div>
 
     </div>
 
     <div class="row">
-        <div ng-hide="showNextArrow" class="showNextArrow col-md-11"><a href="" ng-click="nextQuestion(trivia[nextCatObjectIndex])">Next Question
+        <div ng-show="showNextArrow" class="showNextArrow col-md-11"><a href="" ng-click="nextQuestion(trivia[nextCatObjectIndex])">Next Question
             <img src="assets/views/nextarrow.png" alt="next arrow" class="animated infinite pulse"></a>
         </div>
-        <div ng-hide="showNextCatArrow" class="showNextArrow col-md-11"><a href="#completion" ng-click="playNewCat((totalPoints+catPoints), category)">Complete Category
+        <div ng-show="showNextCatArrow" class="showNextArrow col-md-11"><a href="#completion" ng-click="playNewCat((totalPoints+catPoints), category)">Complete Category
             <img src="assets/views/nextarrow.png" alt="next arrow" class="animated infinite pulse"></a>
         </div>
     </div>

@@ -2,8 +2,8 @@ myApp.factory('ShareData', ["$http", function($http){
     var data = undefined;
     var categoryToPlay = {};
     var newCat = {};
-    //var updateVals = {};
-    //var runningTot = 0;
+    var updateVals = {};
+    var runningTot = 0;
 
     console.log("In Factory");
 
