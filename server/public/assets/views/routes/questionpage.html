@@ -14,9 +14,8 @@
         <div class="col-md-12 headerDiv">
         </div>
     </div>
-</div>
 
-<div class="mainBody">
+<!--<div class="mainBody">-->
     <div ng-hide="beginPlay" ng-click="beginGame()">
         <button class="beginButton animated infinite pulse">Play</button><br><br>
         <p><i>You're 60 seconds will begin. Good luck!</i></p>
@@ -40,7 +39,7 @@
         </div>
 
         <div class="container-fluid answerDiv col-md-5">
-            <ol ng-model="catObject.randomAnswerArray">
+            <ol ng-model="catObject.randomAnswerArray" is-disabled="disableAnswers">
                 <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
                     <div class="sortElement">
                         <span class="highlightHover" data-ng-bind="answer.ans" ng-click="checkAnswer(answer)"></span>

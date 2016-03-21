@@ -26,7 +26,6 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     //set booleans for ng-hide
     $scope.beginPlay = false;
     $scope.gamePlay = true;
-    //$scope.trueOrFalse = true;
     $scope.showNextArrow = false;
     $scope.showNextCatArrow = false;
     $scope.showSuccessMsg = false;
@@ -34,6 +33,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     $scope.isFlipped = false;
     $scope.pointsEarnedCounter = 0;
     $scope.catPlayed = "";
+    $scope.disableAnswers = false;
     $scope.trivia = [];
     //$scope.counter = 0;
     $scope.totalPoints = 0;
@@ -82,6 +82,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
         console.log("I clicked on answer: ", clickedAnswer);
         $scope.isFlipped = true;
+        $scope.disableAnswers = true;
         //$scope.counter++;
         $scope.showNextArrow = true;
         $scope.nextCatObjectIndex = $scope.catObject.idNum;
@@ -99,55 +100,16 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
         }
     };
 
-    //if all answers are ordered correctly/////////////////////////////////
-    //if($scope.counter === 5){
-    //    catCounter++;
-    //    //$scope.disableAnswers = true;
-    //    //console.log("catCounter: ", catCounter);
-    //    $scope.showNextArrow = false;
-
-        //once all 5 questions have been played, ask to play new category/////////////
-        //if(catCounter === 5){
-        //    $scope.showNextArrow = true;
-        //    $scope.showNextCatArrow = false;
-        //}
-
-        //$scope.showSuccessMsg = false;
-        //$scope.showSolution = false;
-        //$scope.nextCatObjectIndex = $scope.catObject.idNum;
-
-        //else if the answers are NOT ordered correctly subtract points//////////////////
-    //} else {
-    //    //$scope.catPoints -= 50;
-    //    //havePointsHere = $scope.catPoints;
-    //
-    //    //if you have 0 points you must move on to next question////////////////////////
-    //    //if(havePointsHere === 0){
-    //
-    //        //console.log("scope.catPoints after click check answers button: ", $scope.catPoints);
-    //        //reset the page view////////////////////
-    //        //$scope.noPointsMsg = false;
-    //        //$scope.showSolution = false;
-    //        //$scope.disableAnswers = true;
-    //        $scope.showNextArrow = false;
-    //        //$scope.trueOrFalse = true;
-    //        //$scope.showSuccessMsg = true;
-    //        catCounter++;
-    //        if(catCounter === 5){
-    //            $scope.showNextArrow = true;
-    //            $scope.showNextCatArrow = false;
-    //        }
-    //        $scope.nextCatObjectIndex = $scope.catObject.idNum;
-    //    }
-
-
 
     //on click of the next arrow after correctly ordered//////////////////////////////
     $scope.nextQuestion = function(next) {
         if(next.category === null) {
             //console.log("Next question click: ", next);
+            //set the new view//////////
+            $scope.showNextArrow = false;
             $scope.isFlipped = false;
             $scope.showSuccessMsg = false;
+            $scope.disableAnswers = false;
             lastPts = $scope.catPoints;
             $scope.totalPoints += $scope.catPoints;
             //console.log("Total Points: ", $scope.totalPoints);
@@ -158,9 +120,8 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
             $scope.category = catTitle;
 
             $scope.catPoints = $scope.catObject.points;
-            //set the new view//////////
 
-            $scope.showNextArrow = true;
+
             //$scope.nextCatObjectIndex = $scope.catObject.idNum;
         } else {
             console.log("In else statement, cat not null.");
