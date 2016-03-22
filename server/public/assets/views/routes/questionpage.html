@@ -1,4 +1,5 @@
 <div class="mainBody container-fluid">
+
     <div class="row topDiv">
         <div class="logoDiv col-md-2">
             <img class="smallLogo" src="/assets/views/Logo1.png" alt="logo">
@@ -8,6 +9,7 @@
         </div>
         <div class="pointsDifficultyDiv col-md-2">
             <p>Points <span class="ptsSpan">{{pointsEarnedCounter}}</span></p>
+            <p>Time Remaining <span>{{counter}}</span></p>
         </div>
     </div>
     <div class="row">
@@ -15,41 +17,48 @@
         </div>
     </div>
 
-<!--<div class="mainBody">-->
-    <div ng-hide="beginPlay" ng-click="beginGame()">
-        <button class="beginButton animated infinite pulse">Play</button><br><br>
-        <p><i>You're 60 seconds will begin. Good luck!</i></p>
-    </div>
-    <div ng-hide="gamePlay" class="gameDiv row">
-        <div class="middle col-md-5 col-md-offset-1">
-            <div class="flip">
-                <div class="card" ng-class="{'flipped':isFlipped}">
-                    <div class="face front questionCard">
-                        <!-- front content -->
-                        <h4>{{catObject.question}}</h4>
-                    </div>
-                    <div class="face back answerCard">
-                        <!-- back content -->
-                        <h4>Correct Answer: <br>{{catObject.solution}}</h4>
-                        <img ng-show="showSuccessMsg" src="/assets/views/thumbsUp1.png" alt="correct answer">
-                        <img ng-show="!showSuccessMsg" src="/assets/views/thumbsDown.png" alt="incorrect answer">
+<!--begin timeout interval area>-->
+    <div ng-show="gameOver">
+        <div ng-hide="beginPlay" ng-click="beginGame()">
+            <button class="beginButton animated infinite pulse">Play</button><br><br>
+            <p><i>You're 60 seconds will begin. Good luck!</i></p>
+        </div>
+        <div ng-hide="gamePlay" class="gameDiv row">
+            <div class="middle col-md-5 col-md-offset-1">
+                <div class="flip">
+                    <div class="card" ng-class="{'flipped':isFlipped}">
+                        <div class="face front questionCard">
+                            <!-- front content -->
+                            <h4>{{catObject.question}}</h4>
+                        </div>
+                        <div class="face back answerCard">
+                            <!-- back content -->
+                            <h4>Correct Answer: <br>{{catObject.solution}}</h4>
+                            <img ng-show="showSuccessMsg" src="/assets/views/thumbsUp1.png" alt="correct answer">
+                            <img ng-show="!showSuccessMsg" src="/assets/views/thumbsDown.png" alt="incorrect answer">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container-fluid answerDiv col-md-5">
-            <ol ng-model="catObject.randomAnswerArray" is-disabled="disableAnswers">
-                <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
-                    <div class="sortElement">
-                        <span class="highlightHover" data-ng-bind="answer.ans" ng-click="checkAnswer(answer)"></span>
-                    </div>
-                </li>
-            </ol>
-            <br><br>
-            <h4 ng-show="showSuccessMsg" class="animated tada">Correct Answer!</h4>
-        </div>
+            <div class="container-fluid answerDiv col-md-5">
+                <ol ng-model="catObject.randomAnswerArray" is-disabled="disableAnswers">
+                    <li ng-repeat="answer in catObject.randomAnswerArray" class="answerBlocks">
+                        <div class="sortElement">
+                            <span class="highlightHover" data-ng-bind="answer.ans" ng-click="checkAnswer(answer)"></span>
+                        </div>
+                    </li>
+                </ol>
+                <br><br>
+                <h4 ng-show="showSuccessMsg" class="animated tada">Correct Answer!</h4>
+            </div>
 
+        </div>
+    </div>
+    <!-- end of timeout div-->
+    <div ng-show="!gameOver">
+        <h1>Game Over!</h1>
+        <p>You earned {{}}</p>
     </div>
 
     <div class="row">

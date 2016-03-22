@@ -16,7 +16,7 @@ myApp.controller('startCtrl', ["$scope", function($scope){
 }]);
 
 
-myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scope, $location, ShareData){
+myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", function($scope, $location, $timeout, ShareData){
     //set variables
     var catCounter = 0;
     var lastPts = 0;
@@ -24,6 +24,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     var catTitle;
 
     //set booleans for ng-hide
+    $scope.gameOver = true;
     $scope.beginPlay = false;
     $scope.gamePlay = true;
     $scope.showNextArrow = false;
@@ -39,6 +40,8 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     $scope.totalPoints = 0;
     $scope.runningTotalPts = 0;
     $scope.newCatValues = {};
+    $scope.counter = 30;
+    var stopped;
     //$scope.newCatValues.runningTotal = 100;
     //console.log("running total: ", $scope.newCatValues.runningTotal);
 
@@ -59,11 +62,6 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     console.log("CatObject: ", $scope.catObject);
 
 
-    $scope.beginGame = function(){
-        $scope.gamePlay = false;
-        $scope.beginPlay = true;
-    };
-
     //talk to factory to get shared data and load first question in category/////////////////////
     $scope.playCategory = function(newValue){
         $location.path('/questionpage');
@@ -76,6 +74,57 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
     catTitle = $scope.catObject.category;
     $scope.category = catTitle;
     //$scope.catPoints = $scope.catObject.points;
+
+    //TIMEOUT BEGIN------------------------------------//
+
+    //
+    //$scope.beginGame = function() {
+    //    //$scope.gameOver = true;
+    //    $scope.gamePlay = false;
+    //    $scope.beginPlay = true;
+        //stopped = $timeout(function() {
+        //    console.log($scope.counter);
+        //    $scope.counter--;
+        //    //if($scope.counter === 0) {
+        //    //    $scope.showNextCatArrow = true;
+        //    //    $scope.gameOver = false;
+        //    //}
+        //    $scope.countdown();
+        //}, 1000);
+
+        //$scope.counter = 5;
+        //$scope.beginGame = function(){
+        //    $scope.gamePlay = false;
+        //    $scope.beginPlay = true;
+        //    $scope.counter--;
+        //    if ($scope.counter > 0) {
+        //        mytimeout = $timeout($scope.onTimeout,1000);
+        //    }
+        //    else {
+        //        console.log("Time is up!");
+        //    }
+        //};
+        //var mytimeout = $timeout($scope.onTimeout,1000);
+
+    //};
+
+    $scope.onTimeout = function() {
+        if($scope.counter ===  0) {
+            //$scope.$broadcast('timer-stopped', 0);
+            $timeout.cancel(mytimeout);
+            return;
+        }
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout, 1000);
+    };
+
+    $scope.beginGame = function() {
+        mytimeout = $timeout($scope.onTimeout, 1000);
+        $scope.gameOver = true;
+        $scope.gamePlay = false;
+        $scope.beginPlay = true;
+    };
+
 
     //--------------CHECK CLICKED ANSWER------------------------//
     $scope.checkAnswer = function(clickedAnswer){
@@ -131,30 +180,33 @@ myApp.controller('gameCtrl', ["$scope", "$location", "ShareData", function($scop
 
     };
 
+    //$scope.gameOver = true;
+
+
+
 //when completed category, set points total and category name to display on page//////////////////////
-$scope.playNewCat = function(pts, cat){
-    //gameOverCounter++;
-    //console.log("GameOverCounter after clicking playNewcat arrow: ", gameOverCounter);
-    $scope.shareData.newCategory(pts, cat);
-};
+    $scope.playNewCat = function(pts, cat){
+        //gameOverCounter++;
+        //console.log("GameOverCounter after clicking playNewcat arrow: ", gameOverCounter);
+        $scope.shareData.newCategory(pts, cat);
+    };
 
-$scope.completionObject = $scope.shareData.getNewCat();
+    $scope.completionObject = $scope.shareData.getNewCat();
 
-//calculate total category points to show back on completion page/////////
-$scope.totPts = $scope.completionObject.totPts + lastPts;
+    //calculate total category points to show back on completion page/////////
+    $scope.totPts = $scope.completionObject.totPts + lastPts;
 
 
-//click to play another category - resets category page////////////////////////////////////
-$scope.updateCatPage = function(runningTotalPts, kittyName){
-    $scope.shareData.updateCat(runningTotalPts, kittyName);
-};
-$scope.newCatValues = $scope.shareData.getUpdateCatPage();
-//console.log("gameover on catpage: ", + gameOverCounter +  ", trivia length: " + $scope.trivia.length);
-//if(gameOverCounter === $scope.trivia.length){
-//    $scope.showGameOver = false;
-//}
+    //click to play another category - resets category page////////////////////////////////////
+    $scope.updateCatPage = function(runningTotalPts, kittyName){
+        $scope.shareData.updateCat(runningTotalPts, kittyName);
+    };
+    $scope.newCatValues = $scope.shareData.getUpdateCatPage();
+    //console.log("gameover on catpage: ", + gameOverCounter +  ", trivia length: " + $scope.trivia.length);
+    //if(gameOverCounter === $scope.trivia.length){
+    //    $scope.showGameOver = false;
+    //}
 
- //end of gameCtrl controller///////////////////////////////////////
 
 
 }]);
