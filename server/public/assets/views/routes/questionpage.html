@@ -8,8 +8,8 @@
             <p>{{category}}</p>
         </div>
         <div class="pointsDifficultyDiv col-md-2">
-            <p>Points <span class="ptsSpan">{{pointsEarnedCounter}}</span></p>
-            <p>Time Remaining <span>{{counter}}</span></p>
+            <p>Earned <br><span class="ptsSpan">{{pointsEarnedCounter}} points</span></p>
+            <p>Time Remaining <br><span class="time">{{counter}} seconds</span></p>
         </div>
     </div>
     <div class="row">
@@ -34,7 +34,7 @@
                         <div class="face back answerCard">
                             <!-- back content -->
                             <h4>Correct Answer: <br>{{catObject.solution}}</h4>
-                            <img ng-show="showSuccessMsg" src="/assets/views/thumbsUp1.png" alt="correct answer">
+                            <img ng-show="showSuccessMsg" src="/assets/views/thumbsUp.png" alt="correct answer">
                             <img ng-show="!showSuccessMsg" src="/assets/views/thumbsDown.png" alt="incorrect answer">
                         </div>
                     </div>

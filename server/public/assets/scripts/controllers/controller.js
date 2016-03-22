@@ -36,11 +36,10 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
     $scope.catPlayed = "";
     $scope.disableAnswers = false;
     $scope.trivia = [];
-    //$scope.counter = 0;
     $scope.totalPoints = 0;
     $scope.runningTotalPts = 0;
     $scope.newCatValues = {};
-    $scope.counter = 30;
+    $scope.counter = 60;
     var stopped;
     //$scope.newCatValues.runningTotal = 100;
     //console.log("running total: ", $scope.newCatValues.runningTotal);
@@ -77,40 +76,11 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
 
     //TIMEOUT BEGIN------------------------------------//
 
-    //
-    //$scope.beginGame = function() {
-    //    //$scope.gameOver = true;
-    //    $scope.gamePlay = false;
-    //    $scope.beginPlay = true;
-        //stopped = $timeout(function() {
-        //    console.log($scope.counter);
-        //    $scope.counter--;
-        //    //if($scope.counter === 0) {
-        //    //    $scope.showNextCatArrow = true;
-        //    //    $scope.gameOver = false;
-        //    //}
-        //    $scope.countdown();
-        //}, 1000);
-
-        //$scope.counter = 5;
-        //$scope.beginGame = function(){
-        //    $scope.gamePlay = false;
-        //    $scope.beginPlay = true;
-        //    $scope.counter--;
-        //    if ($scope.counter > 0) {
-        //        mytimeout = $timeout($scope.onTimeout,1000);
-        //    }
-        //    else {
-        //        console.log("Time is up!");
-        //    }
-        //};
-        //var mytimeout = $timeout($scope.onTimeout,1000);
-
-    //};
-
     $scope.onTimeout = function() {
         if($scope.counter ===  0) {
-            //$scope.$broadcast('timer-stopped', 0);
+            $scope.gameOver = false;
+            $scope.showNextArrow = false;
+            $scope.showNextCatArrow = true;
             $timeout.cancel(mytimeout);
             return;
         }
@@ -141,7 +111,6 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
             //$scope.isFlipped = true;
             $scope.showSuccessMsg = true;
             $scope.pointsEarnedCounter++;
-
         } else {
             //console.log("No, not a match");
             $scope.showIncorrectMsg = true;

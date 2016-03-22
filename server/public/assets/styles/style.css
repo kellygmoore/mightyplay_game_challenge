@@ -45,6 +45,10 @@ body {
     color: purple;
 }
 
+.time {
+    color: mediumblue;
+}
+
 .headerDiv {
     border-bottom: 4px solid black;
     height: 5px;
@@ -111,7 +115,7 @@ h3 img {
     line-height: 35px;
     box-shadow: 3px 3px 4px gray;
     border-radius: 5px;
-    font-size: 2em;
+    font-size: 3em;
     padding: 20px 15px;
     margin: 30px auto;
     text-align: center;
@@ -148,16 +152,16 @@ h3 img {
     border-radius: 5px;
 }
 
-.buttonClass {
-    width: 175px;
-    border: 1px solid black;
-    margin-top: 20px;
-    font-size: 22px;
-    border-radius: 5px;
-    text-align: center;
-    background: radial-gradient(white, gold);
-    box-shadow: 3px 3px 4px black;
-}
+/*.buttonClass {*/
+    /*width: 175px;*/
+    /*border: 1px solid black;*/
+    /*margin-top: 20px;*/
+    /*font-size: 22px;*/
+    /*border-radius: 5px;*/
+    /*text-align: center;*/
+    /*background: radial-gradient(white, gold);*/
+    /*box-shadow: 3px 3px 4px black;*/
+/*}*/
 
 .showNextArrow {
     text-align: right;
