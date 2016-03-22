@@ -52,7 +52,9 @@ myApp.factory('ShareData', ["$http", function($http){
     //
     //change view back on category page to update total points from game///////
     var update = function(runPts, cName){
+        console.log("In factory, here is runPts: ", runPts);
         runningTot += runPts;
+        console.log("RunningTotal: ", runningTot);
         updateVals = {runningTotal: runningTot, catPlayed: cName};
         return updateVals;
     };

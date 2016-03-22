@@ -6,12 +6,13 @@
     <div id="instructions">
         <h3>Welcome!</h3>
         <h4>Flash Learning is a fun way to solidify facts you've learned.<br></h4>
-        <h4><a ng-click="showInstructions()">Click to view instructions</a></h4>
+        <h4><a class="pointer" ng-click="showInstructions()">Click to view instructions</a></h4>
         <p ng-hide="showHow" class="instr animated bounceInDown">You will be presented with a choice of class and sub-section.<br>
             Get ready to play, as you only have 60 seconds to earn a point for each question answered correctly!  When a flash
             card is presented, choose carefully to select the right answer.  If you get it right, you earn 1 point.
-            Get it wrong, and you automatically move on to the next question.<br>When you are finished with all the questions, you
-            can play another class.  Good luck!
+            Get it wrong, and you can move on to the next question.
+            <br>When you are finished with all of the questions or your time runs out, you
+            can play another class to earn more points.  Good luck!
             </p>
     </div>
     <div class="loginOrRegisterDiv row">
@@ -20,7 +21,7 @@
         </div>
     </div>
 </div>
-<div id="logoCredit"><a ng-click="showLogoCredits()">Credits</a>
+<div class="pointer" id="logoCredit"><a ng-click="showLogoCredits()">Credits</a>
     <p ng-hide="showCredits" class="animated flipInX">Logo graphic by
         <a href="http://catalinfertu.com">Catalin Fertu</a> from
         <a href="http://www.flaticon.com/">Flaticon</a> is licensed under

@@ -1,6 +1,6 @@
 
 body {
-    background-image: url("../views/bkdg4.jpg");
+    background-image: url("../views/bkgd9.jpg");
     font-family: 'Fredoka One', Arial, sans-serif;
 }
 
@@ -8,12 +8,20 @@ body {
 .bigDiv {
     background-color: #FFFFFF;
     width: 90%;
-    height: 1200px;
+    height: 800px;
     margin: 5% auto;
     padding: 3%;
     border: 8px ridge red;
     border-radius: 20px;
     text-align: center;
+}
+
+.instructions {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .instr {
@@ -49,9 +57,14 @@ body {
     color: mediumblue;
 }
 
+#green {
+    color: green;
+}
+
 .headerDiv {
     border-bottom: 4px solid black;
     height: 5px;
+    margin-top: 10px;
 }
 
 .linkButton {
@@ -103,7 +116,7 @@ h3 img {
     font-size: 22px;
     border-radius: 5px;
     text-align: center;
-    background: radial-gradient(white, #237713);
+    background: radial-gradient(white, green);
     box-shadow: 3px 3px 4px black;
 }
 
@@ -115,7 +128,7 @@ h3 img {
     line-height: 35px;
     box-shadow: 3px 3px 4px gray;
     border-radius: 5px;
-    font-size: 3em;
+    /*font-size: 3em;*/
     padding: 20px 15px;
     margin: 30px auto;
     text-align: center;
@@ -128,7 +141,7 @@ h3 img {
 
 .answerBlocks {
     height: 55px;
-    line-height: 45px;
+    /*line-height: 45px;*/
     font-size: 2em;
     list-style-type: upper-alpha;
     color: black;
@@ -151,17 +164,6 @@ h3 img {
     border: 1px solid #000000;
     border-radius: 5px;
 }
-
-/*.buttonClass {*/
-    /*width: 175px;*/
-    /*border: 1px solid black;*/
-    /*margin-top: 20px;*/
-    /*font-size: 22px;*/
-    /*border-radius: 5px;*/
-    /*text-align: center;*/
-    /*background: radial-gradient(white, gold);*/
-    /*box-shadow: 3px 3px 4px black;*/
-/*}*/
 
 .showNextArrow {
     text-align: right;
@@ -205,8 +207,6 @@ h3 img {
 .flip .card .front {
     position: absolute;
     z-index: 1;
-    /*background: black;*/
-    /*color: white;*/
     cursor: pointer;
 }
 

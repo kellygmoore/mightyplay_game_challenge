@@ -15,10 +15,10 @@ myApp.config(["$routeProvider", function($routeProvider){
             templateUrl: "assets/views/routes/questionpage.html",
             controller: "gameCtrl"
         }).
-        when('/completion', {
-            templateUrl: "assets/views/routes/completion.html",
-            controller: "gameCtrl"
-        }).
+        //when('/completion', {
+        //    templateUrl: "assets/views/routes/completion.html",
+        //    controller: "gameCtrl"
+        //}).
         otherwise({
             redirectTo: 'start'
         })
