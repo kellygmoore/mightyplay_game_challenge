@@ -29,6 +29,11 @@ body {
     margin: auto;
 }
 
+.playLink a {
+    color: red;
+
+}
+
 /*Category Page*********************/
 
 .logoDiv img {
@@ -136,6 +141,8 @@ h3 img {
 
 .answerCard {
     background-color: black;
+    border: 2px solid gold;
+    box-shadow: 3px 3px 4px gold;
     color: white;
 }
 

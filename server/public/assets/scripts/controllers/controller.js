@@ -36,6 +36,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
     $scope.showIncorrectMsg = false;
     $scope.isFlipped = false;
     $scope.disableAnswers = false;
+    $scope.isDisabled = false;
 
     $scope.trivia = [];
     $scope.newCatValues = {};
@@ -103,6 +104,7 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
         //console.log("I clicked on answer: ", clickedAnswer);
         $scope.isFlipped = true;
         $scope.disableAnswers = true;
+        $scope.isDisabled = true;
         $scope.showNextArrow = true;
         $scope.nextCatObjectIndex = $scope.catObject.idNum;
         //$scope.showNextArrow = !$scope.showNextArrow;
@@ -127,7 +129,6 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
             $scope.showSuccessMsg = false;
             $scope.disableAnswers = false;
             lastPts = $scope.pointsEarnedCounter;
-            //$scope.totalPoints += $scope.pointsEarnedCounter;
             console.log("lastPts: ", lastPts);
 
             //get shared data to set up new catObject//////////////////////////
@@ -137,24 +138,16 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
             //$scope.catPoints = $scope.catObject.points;
         } else {
             console.log("In else statement, cat not null.");
-                $scope.showNextArrow = false;
+            $scope.showNextArrow = false;
             //calculate total category points to show back on completion page/////////
             $scope.totPts = lastPts;
             console.log("lastpts: ", lastPts);
             console.log("scope totPts: ", $scope.totPts);
-                //$scope.showNextCatArrow = true;
+            $scope.gameOver = false;
+            $timeout.cancel(mytimeout);
+            //$scope.showNextCatArrow = true;
         }
     };
-
-//when completed category, set points total and category name to display on page//////////////////////
-//    $scope.playNewCat = function(pts, cat){
-//        console.log("pts in playNewCat: ", pts);
-//        $scope.shareData.newCategory(pts, cat);
-//    };
-//
-//    $scope.completionObject = $scope.shareData.getNewCat();
-
-
 
 
     //click to play another category - resets category page////////////////////////////////////
@@ -162,9 +155,6 @@ myApp.controller('gameCtrl', ["$scope", "$location", "$timeout", "ShareData", fu
         $scope.shareData.updateCat(runningTotalPts, kittyName);
     };
     $scope.newCatValues = $scope.shareData.getUpdateCatPage();
-
-
-
 
 }]);
 
